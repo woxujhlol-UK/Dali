@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>共赢挑战·同心聚力 — 达利同心共赢挑战赛</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <nav class="main-nav">
+    <div class="nav-brand">共赢挑战·同心聚力</div>
+    <ul class="nav-links">
+      <li><a href="#intro">活动介绍</a></li>
+      <li><a href="#teams">加入战队</a></li>
+      <li><a href="#games">闯关任务</a></li>
+      <li><a href="#leaderboard">积分榜</a></li>
+      <li><a href="#rules">规则说明</a></li>
+    </ul>
+  </nav>
+
+  <!-- 英雄区 -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="mountain-layer"></div>
+      <div class="wave-layer"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-subtitle">达利同心共赢挑战赛</span>
+      <h1 class="hero-title">凝心共奋进<br>同心赢未来</h1>
+      <p class="hero-desc">鼎湖山蝴蝶谷 · 260人 · 10支品牌战队</p>
+      <a href="#teams" class="cta-btn">立即组队</a>
+    </div>
+  </section>
+
+  <!-- 活动介绍 -->
+  <section id="intro" class="section intro-section">
+    <h2 class="section-title">活动介绍</h2>
+    <div class="intro-grid">
+      <div class="intro-card">
+        <span class="intro-num">260</span>
+        <p>参与人数</p>
+      </div>
+      <div class="intro-card">
+        <span class="intro-num">10</span>
+        <p>品牌战队</p>
+      </div>
+      <div class="intro-card">
+        <span class="intro-num">3</span>
+        <p>闯关任务</p>
+      </div>
+      <div class="intro-card">
+        <span class="intro-num">2</span>
+        <p>任务区域</p>
+      </div>
+    </div>
+    <div class="task-areas">
+      <h3>任务区分配</h3>
+      <div class="area-cards">
+        <div class="area-card qixingyan">
+          <h4>七星岩任务区</h4>
+          <p class="area-count">每队 10 人</p>
+        </div>
+        <div class="area-card dinghushan">
+          <h4>鼎湖山任务区</h4>
+          <p class="area-count">每队 16 人</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌组队 -->
+  <section id="teams" class="section teams-section">
+    <h2 class="section-title">选择你的战队</h2>
+    <p class="section-desc">自愿组队，先到先得 · 每组上限 26 人</p>
+    <div class="teams-grid" id="teamsGrid">
+      <!-- 由 JS 动态生成 -->
+    </div>
+  </section>
+
+  <!-- 三大关卡 -->
+  <section id="games" class="section games-section">
+    <h2 class="section-title">闯关任务</h2>
+    <p class="section-desc">主线：共赢挑战·同心聚力</p>
+    <div class="games-grid">
+      <a href="game1.html" class="game-card" data-level="1" style="text-decoration:none;color:inherit">
+        <div class="game-icon">🏃</div>
+        <h3>第一关：山水接力运臻品</h3>
+        <p class="game-type">线上模拟接力闯关</p>
+        <ul class="game-desc">
+          <li>操控虚拟托盘运送达利产品</li>
+          <li>穿越草地、石阶、小桥、弯道</li>
+          <li>保持产品不掉落送达终点</li>
+        </ul>
+        <span class="game-tag">顺利送达获基础分 · 掉落/超时扣分</span>
+      </a>
+      <a href="game2.html" class="game-card" data-level="2" style="text-decoration:none;color:inherit">
+        <div class="game-icon">🏗️</div>
+        <h3>第二关：同心搭筑品牌塔</h3>
+        <p class="game-type">线上团队协作搭建</p>
+        <ul class="game-desc">
+          <li>使用虚拟积木搭建品牌之塔</li>
+          <li>达到指定高度，通过稳固检测</li>
+          <li>抵御系统轻微晃动测试</li>
+        </ul>
+        <span class="game-tag">达标+稳固高分 · 倒塌/超时扣分</span>
+      </a>
+      <a href="game3.html" class="game-card" data-level="3" style="text-decoration:none;color:inherit">
+        <div class="game-icon">🫱</div>
+        <h3>第三关：环湖聚力拔河赛</h3>
+        <p class="game-type">线上趣味互动拔河</p>
+        <ul class="game-desc">
+          <li>两组对抗，全员节奏操作合力</li>
+          <li>比拼反应速度与同步率</li>
+          <li>中线拉至己方区域获胜</li>
+        </ul>
+        <span class="game-tag">获胜加分 · 消极/违规扣分</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 积分榜 -->
+  <section id="leaderboard" class="section leaderboard-section">
+    <h2 class="section-title">积分榜</h2>
+    <div class="leaderboard-table-wrap">
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>排名</th>
+            <th>战队</th>
+            <th>第一关</th>
+            <th>第二关</th>
+            <th>第三关</th>
+            <th>总分</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardBody">
+          <!-- 由 JS 生成 -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 规则说明 -->
+  <section id="rules" class="section rules-section">
+    <h2 class="section-title">通用规则</h2>
+    <div class="rules-content">
+      <ul>
+        <li>所有关卡需在规定时间内完成</li>
+        <li>全程禁止违规操作（恶意卡顿、作弊、消极游戏等）</li>
+        <li>违规一次，扣除对应团队分数</li>
+        <li>最终按三关总游戏积分排名，获得相对应主线积分</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="main-footer">
+    <p>达利同心共赢挑战赛 · 凝心共奋进，同心赢未来</p>
+  </footer>
+
+  <!-- 组队弹窗 -->
+  <div class="modal" id="teamModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h2 id="modalTeamName">选择战队</h2>
+      <p class="modal-desc">确认加入该战队？组队完成后，小组内自行分配七星岩(10人)与鼎湖山(16人)任务区。</p>
+      <form id="joinForm">
+        <input type="text" id="userName" placeholder="请输入姓名" required>
+        <input type="text" id="userId" placeholder="工号（可选）">
+        <button type="submit" class="submit-btn">确认加入</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

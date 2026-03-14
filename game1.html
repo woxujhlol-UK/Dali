@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第一关：山水接力运臻品</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .game-container { max-width: 800px; margin: 2rem auto; padding: 1rem; }
+    .game-header { text-align: center; margin-bottom: 2rem; }
+    .game-header h1 { color: var(--color-gold); margin-bottom: 0.5rem; }
+    .game-header p { color: var(--color-text-muted); }
+    .track { background: linear-gradient(180deg, #1a3a2e 0%, #2d5a3d 50%, #1a3a2e 100%); border-radius: 12px; padding: 2rem; min-height: 300px; position: relative; overflow: hidden; }
+    .track-path { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .checkpoint { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+    .checkpoint.active { background: var(--color-orange); color: white; }
+    .checkpoint.done { background: var(--color-mountain); }
+    .tray-area { text-align: center; padding: 2rem; }
+    .tray { display: inline-block; width: 80px; height: 40px; background: #8B4513; border-radius: 8px; position: relative; }
+    .product { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 30px; height: 20px; background: #F59E0B; border-radius: 4px; }
+    .controls { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+    .ctrl-btn { padding: 0.8rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .ctrl-btn.primary { background: var(--color-orange); color: white; }
+    .ctrl-btn.secondary { background: rgba(255,255,255,0.1); color: white; }
+    .score-display { text-align: center; font-size: 1.5rem; color: var(--color-gold); margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <a href="index.html" class="nav-brand">← 返回</a>
+  </nav>
+  <div class="game-container">
+    <div class="game-header">
+      <h1>第一关：山水接力运臻品</h1>
+      <p>操控虚拟托盘运送达利产品，穿越草地、石阶、小桥、弯道，保持产品不掉落</p>
+    </div>
+    <div class="score-display">当前得分：<span id="score">0</span></div>
+    <div class="track">
+      <div class="track-path">
+        <div class="checkpoint active" data-idx="0">起点</div>
+        <div class="checkpoint" data-idx="1">草地</div>
+        <div class="checkpoint" data-idx="2">石阶</div>
+        <div class="checkpoint" data-idx="3">小桥</div>
+        <div class="checkpoint" data-idx="4">终点</div>
+      </div>
+      <div class="tray-area">
+        <div class="tray" id="tray"><div class="product"></div></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="ctrl-btn primary" id="startBtn">开始接力</button>
+      <button class="ctrl-btn secondary" id="resetBtn">重新开始</button>
+    </div>
+  </div>
+  <script>
+    let score = 0, currentCheckpoint = 0;
+    const checkpoints = document.querySelectorAll('.checkpoint');
+    const tray = document.getElementById('tray');
+    const scoreEl = document.getElementById('score');
+
+    document.getElementById('startBtn').onclick = () => {
+      if (currentCheckpoint >= 4) return;
+      checkpoints[currentCheckpoint].classList.remove('active');
+      checkpoints[currentCheckpoint].classList.add('done');
+      currentCheckpoint++;
+      if (currentCheckpoint < 4) checkpoints[currentCheckpoint].classList.add('active');
+      score += 20;
+      scoreEl.textContent = score;
+      tray.style.animation = 'none'; tray.offsetHeight; tray.style.animation = 'shake 0.3s ease';
+      if (currentCheckpoint >= 4) alert('恭喜完成！获得基础分 ' + score);
+    };
+
+    document.getElementById('resetBtn').onclick = () => {
+      currentCheckpoint = 0; score = 0;
+      checkpoints.forEach((c, i) => { c.classList.remove('active', 'done'); if (i === 0) c.classList.add('active'); });
+      scoreEl.textContent = '0';
+    };
+  </script>
+</body>
+</html>

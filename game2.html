@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第二关：同心搭筑品牌塔</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .game-container { max-width: 700px; margin: 2rem auto; padding: 1rem; }
+    .game-header { text-align: center; margin-bottom: 2rem; }
+    .game-header h1 { color: var(--color-gold); margin-bottom: 0.5rem; }
+    .tower-zone { background: var(--color-bg-card); border-radius: 12px; padding: 2rem; min-height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+    .tower { display: flex; flex-direction: column-reverse; align-items: center; gap: 2px; min-height: 200px; }
+    .block { background: linear-gradient(135deg, #D4AF37, #B8860B); color: #1a1a1a; padding: 0.5rem 1.5rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; }
+    .block span { opacity: 0.8; font-size: 0.75rem; }
+    .controls { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
+    .ctrl-btn { padding: 0.8rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .ctrl-btn.primary { background: var(--color-orange); color: white; }
+    .ctrl-btn.secondary { background: rgba(255,255,255,0.1); color: white; }
+    .height-display { font-size: 1.2rem; color: var(--color-gold); margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <a href="index.html" class="nav-brand">← 返回</a>
+  </nav>
+  <div class="game-container">
+    <div class="game-header">
+      <h1>第二关：同心搭筑品牌塔</h1>
+      <p>使用虚拟积木搭建品牌之塔，达到指定高度并通过稳固检测</p>
+    </div>
+    <div class="height-display">当前高度：<span id="height">0</span> 层 / 目标 5 层</div>
+    <div class="tower-zone">
+      <div class="tower" id="tower"></div>
+    </div>
+    <div class="controls">
+      <button class="ctrl-btn primary" id="addBtn">添加积木</button>
+      <button class="ctrl-btn secondary" id="testBtn">稳固检测</button>
+      <button class="ctrl-btn secondary" id="resetBtn">重新搭建</button>
+    </div>
+  </div>
+  <script>
+    const TARGET = 5;
+    let blocks = [];
+    const tower = document.getElementById('tower');
+    const heightEl = document.getElementById('height');
+
+    function render() {
+      tower.innerHTML = blocks.map((b, i) => `<div class="block">${b}<br><span>达利</span></div>`).join('');
+      heightEl.textContent = blocks.length;
+    }
+
+    document.getElementById('addBtn').onclick = () => {
+      if (blocks.length >= 8) return;
+      blocks.push('品牌塔');
+      render();
+      if (blocks.length >= TARGET) document.getElementById('testBtn').focus();
+    };
+
+    document.getElementById('testBtn').onclick = () => {
+      if (blocks.length < TARGET) { alert('高度不足，需至少 ' + TARGET + ' 层'); return; }
+      alert('稳固检测通过！团队协作搭建成功！');
+    };
+
+    document.getElementById('resetBtn').onclick = () => {
+      blocks = [];
+      render();
+    };
+
+    render();
+  </script>
+</body>
+</html>

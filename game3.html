@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第三关：环湖聚力拔河赛</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .game-container { max-width: 600px; margin: 2rem auto; padding: 1rem; }
+    .game-header { text-align: center; margin-bottom: 2rem; }
+    .game-header h1 { color: var(--color-gold); margin-bottom: 0.5rem; }
+    .tug-area { background: var(--color-bg-card); border-radius: 12px; padding: 2rem; }
+    .rope-container { display: flex; align-items: center; justify-content: space-between; margin: 2rem 0; }
+    .team-zone { flex: 1; text-align: center; padding: 1rem; }
+    .team-zone.left { background: rgba(232,93,4,0.2); border-radius: 8px 0 0 8px; }
+    .team-zone.right { background: rgba(45,90,61,0.3); border-radius: 0 8px 8px 0; }
+    .rope { flex: 2; height: 8px; background: linear-gradient(90deg, var(--color-orange), #D4AF37, var(--color-mountain)); border-radius: 4px; position: relative; }
+    .rope-marker { position: absolute; width: 20px; height: 30px; background: #fff; top: 50%; transform: translate(-50%, -50%); border-radius: 4px; left: var(--marker, 50%); transition: left 0.3s; }
+    .controls { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
+    .ctrl-btn { padding: 1rem 2rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: inherit; font-size: 1rem; }
+    .ctrl-btn.primary { background: var(--color-orange); color: white; }
+    .sync-hint { text-align: center; color: var(--color-text-muted); margin-top: 1rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <a href="index.html" class="nav-brand">← 返回</a>
+  </nav>
+  <div class="game-container">
+    <div class="game-header">
+      <h1>第三关：环湖聚力拔河赛</h1>
+      <p>全员同步节奏操作、合力发力，中线拉至己方区域获胜</p>
+    </div>
+    <div class="tug-area">
+      <div class="rope-container">
+        <div class="team-zone left"><strong>己方</strong></div>
+        <div class="rope"><div class="rope-marker" id="marker"></div></div>
+        <div class="team-zone right"><strong>对方</strong></div>
+      </div>
+      <div class="controls">
+        <button class="ctrl-btn primary" id="pullBtn">合力拉！</button>
+      </div>
+      <p class="sync-hint">模拟：全员同步点击「合力拉」节奏一致可获得更大拉力</p>
+    </div>
+  </div>
+  <script>
+    let position = 50;
+    const marker = document.getElementById('marker');
+
+    document.getElementById('pullBtn').onclick = () => {
+      position = Math.min(90, position + 8);
+      marker.style.left = position + '%';
+      if (position >= 85) {
+        alert('恭喜获胜！中线已拉至己方区域！');
+        position = 50;
+        marker.style.left = '50%';
+      }
+    };
+  </script>
+</body>
+</html>
